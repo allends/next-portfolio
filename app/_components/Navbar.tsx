@@ -34,7 +34,7 @@ export const Navbar = () => {
             })
           }
         </div>
-        <h1 className="font-normal text-3xl">Allen Davis-Swing</h1>
+        <h1 className="font-normal text-3xl">allen davis swing</h1>
       </div>
     )
 }
