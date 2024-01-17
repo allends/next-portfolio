@@ -1,38 +1,25 @@
-import { headers } from "next/headers"
+export const dynamic = 'force-dynamic'
+import { getFileByName } from '@/app/api/projects/route'
+import { headers } from 'next/headers'
 
 type Project = {
-    title: string,
-    contents: string,
+    title: string
+    content: string
+    metadata: Record<string, string>
 }
 
 export default async function ProjectPage() {
-
     const head = headers()
     const pathname = head.get('next-url')
     const projectName = pathname?.split('/').at(-1)
 
-    console.log(projectName)
-
     if (!projectName) {
-        return (
-            <div>error</div>
-        )
+        return <div>error</div>
     }
 
-    const projectUrl = `http://localhost:3000/api/projects?` + new URLSearchParams({
-        projectName
-    })
+    console.log(projectName)
 
-    console.log(projectUrl)
+    const project = await getFileByName(projectName)
 
-    const projectResponse = await fetch(projectUrl)
-    const project = await projectResponse.json() as Project
-
-    return (
-        <div>
-            {
-                project.contents
-            }
-        </div>
-    )
+    return <div className=''>{project.content}</div>
 }

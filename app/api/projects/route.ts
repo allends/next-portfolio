@@ -7,8 +7,7 @@ export async function GET(request: NextRequest) {
     const projectName = searchParams.get('projectName')
 
     if (!!projectName) {
-        console.log('getting file: ', projectName)
-        return getFileByName(projectName)
+        return getFileResponseByName(projectName)
     }
 
     const projectPath = `${process.cwd()}/app/api/projectFiles`
@@ -40,18 +39,32 @@ export async function GET(request: NextRequest) {
     return Response.json({ projects })
 }
 
-async function getFileByName(fileName: string) {
-    const filePath = `${process.cwd()}/app/api/projectFiles/${fileName}.md`
-
+export async function getFileResponseByName(fileName: string) {
     try {
-        const file = await readFile(filePath, 'utf-8')
-        return Response.json({
-            title: fileName,
-            contents: file
-        })
+        const file = await getFileByName(fileName)
+        return Response.json(file)
     } catch (error) {
-        console.error(error)
         return Response.error()
+    }
+}
+
+export async function getFileByName(fileName: string) {
+    const filePath = `${process.cwd()}/app/api/projectFiles/${fileName}.md`
+    const file = await readFile(filePath, 'utf-8')
+
+    const metadataMap = new Map<string, string>()
+
+    const [metadata, content] = file.split('---')
+
+    for (const line of metadata.split('\n')) {
+        const [key, value] = line.split(':')
+        // metadataMap.set(key.trim(), value.trim())
+    }
+
+    return {
+        title: fileName,
+        metadata: Object.fromEntries(metadataMap),
+        content,
     }
 }
 
