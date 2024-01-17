@@ -31,7 +31,8 @@ export async function GET(request: NextRequest) {
                 title: file,
                 content: fileContents,
             })
-        } catch {
+        } catch (error) {
+            console.error(error)
             Response.error()
         }
     }
@@ -44,6 +45,7 @@ export async function getFileResponseByName(fileName: string) {
         const file = await getFileByName(fileName)
         return Response.json(file)
     } catch (error) {
+        console.error(error)
         return Response.error()
     }
 }

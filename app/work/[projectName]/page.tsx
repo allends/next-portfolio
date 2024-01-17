@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic'
 import { getFileByName } from '@/app/api/projects/route'
 import { headers } from 'next/headers'
+import Markdown from 'react-markdown'
 
 type Project = {
     title: string
@@ -21,5 +22,9 @@ export default async function ProjectPage() {
 
     const project = await getFileByName(projectName)
 
-    return <div className=''>{project.content}</div>
+    return (
+        <article className="prose">
+            <Markdown>{project.content}</Markdown>
+        </article>
+    )
 }
