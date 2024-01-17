@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 
 export const Navbar = () => {
@@ -38,6 +39,7 @@ export const Navbar = () => {
           <h1 className="font-normal text-3xl">allen davis swing</h1>
           <p>software engineer - nyc</p>
         </div>
+        <Separator />
       </div>
     )
 }

@@ -1,6 +1,6 @@
 const WorkPage = () => {
     return (
-        <div>Work Page</div>
+        <div>BROOO</div>
     )
 }
 

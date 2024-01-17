@@ -23,9 +23,9 @@ const projectCards = [
 
 export default function Home() {
     return (
-        <main className="flex flex-col flex-1 items-center justify-around p-24">
+        <main className="flex flex-col flex-1 items-center justify-around p-24 relative">
             <Carousel
-                className="w-3/4"
+                className="w-3/4 absolute -translate-y-full"
                 opts={{
                     loop: true
                 }}
