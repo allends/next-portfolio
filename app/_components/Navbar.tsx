@@ -34,7 +34,10 @@ export const Navbar = () => {
             })
           }
         </div>
-        <h1 className="font-normal text-3xl">allen davis swing</h1>
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="font-normal text-3xl">allen davis swing</h1>
+          <p>software engineer - nyc</p>
+        </div>
       </div>
     )
 }

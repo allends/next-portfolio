@@ -24,14 +24,6 @@ const projectCards = [
 export default function Home() {
     return (
         <main className="flex flex-col flex-1 items-center justify-around p-24">
-            <div className="flex flex-col gap-2">
-                <h1 className="text-xl text-center">
-                    I am a software engineer based in nyc
-                </h1>
-                <p className="text-sm font-light text-center">
-                    Here is a collection of my work.
-                </p>
-            </div>
             <Carousel
                 className="w-3/4"
                 opts={{
