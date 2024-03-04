@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic'
 import { getFileByName } from '@/app/api/projects/route'
+import { Badge } from '@/components/ui/badge'
 import { headers } from 'next/headers'
 import Markdown from 'react-markdown'
 
@@ -18,12 +19,21 @@ export default async function ProjectPage() {
         return <div>error</div>
     }
 
-    console.log(projectName)
-
     const project = await getFileByName(projectName)
 
     return (
-        <article className="prose">
+        <article className="prose mb-20 flex-1">
+            <div className='flex flex-row gap-2 mb-2'>
+            {
+                project.metadata['tags'].split(',').map((tag: string) => {
+                    return (
+                        <Badge key={tag} variant="outline">
+                            {tag}
+                        </Badge>
+                    )
+                })
+            }
+            </div>
             <Markdown>{project.content}</Markdown>
         </article>
     )

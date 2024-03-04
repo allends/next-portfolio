@@ -1,8 +1,7 @@
-import { readFile, readdir, stat } from "fs/promises";
-import { NextRequest } from "next/server";
+import { readFile, readdir, stat } from 'fs/promises'
+import { NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {
-
     const searchParams = request.nextUrl.searchParams
     const projectName = searchParams.get('projectName')
 
@@ -12,7 +11,7 @@ export async function GET(request: NextRequest) {
 
     const projectPath = `${process.cwd()}/app/api/projectFiles`
 
-    let files : string[] = []
+    let files: string[] = []
     try {
         files = await readdir(projectPath)
     } catch (error) {
@@ -40,6 +39,49 @@ export async function GET(request: NextRequest) {
     return Response.json({ projects })
 }
 
+export async function getAllFiles() {
+    const projectPath = `${process.cwd()}/app/api/projectFiles`
+
+    let files: string[] = []
+    try {
+        files = await readdir(projectPath)
+    } catch (error) {
+        console.error(error)
+        Response.error()
+    }
+    const projects = []
+
+    for (const file of files) {
+        const filePath = `${projectPath}/${file}`
+
+        try {
+            const fileContents = await readFile(filePath, 'utf-8')
+
+            const metadataMap = new Map<string, string>()
+
+            const [metadata, contents] = fileContents.split('---')
+
+            metadata.split('\n').forEach((line) => {
+                if (!line) return
+                const [key, value] = line.split(':')
+
+                metadataMap.set(key.trim(), value.trim())
+            })
+
+            projects.push({
+                title: file.split('.')[0],
+                metadata: Object.fromEntries(metadataMap),
+                content: contents,
+            })
+        } catch (error) {
+            console.error(error)
+            Response.error()
+        }
+    }
+
+    return projects
+}
+
 export async function getFileResponseByName(fileName: string) {
     try {
         const file = await getFileByName(fileName)
@@ -59,8 +101,9 @@ export async function getFileByName(fileName: string) {
     const [metadata, content] = file.split('---')
 
     for (const line of metadata.split('\n')) {
+        if (!line) continue
         const [key, value] = line.split(':')
-        // metadataMap.set(key.trim(), value.trim())
+        metadataMap.set(key.trim(), value.trim())
     }
 
     return {

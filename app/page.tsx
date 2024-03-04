@@ -1,50 +1,68 @@
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import { Image } from '@assetstack/react'
+import {
+    Card,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card'
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '@/components/ui/carousel'
+import Link from 'next/link'
+import { getAllFiles } from './api/projects/route'
 
-const projectCards = [
-    {
-        title: "Blueberry: A backend framework",
-        description: "Simple, modern, extensible, written in Rust"
-    },
-    {
-        title: "ChapterLink",
-        description: "An organization manager for the busy"
-    },
-    {
-        title: "VoxArt",
-        description: "Create beautiful presentations with just your voice"
-    },
-    {
-        title: "AssetStack",
-        description: "Manage your assets safely in the cloud"
-    }
-]
+export default async function Home() {
+    const projects = await getAllFiles()
 
-export default function Home() {
+    const projectCards = projects.map((project) => {
+        return {
+            name: project.title,
+            cardTitle: project.metadata['descriptiveTitle'],
+            description: project.metadata['description'],
+        }
+    })
+
     return (
-        <main className="flex flex-col flex-1 items-center justify-around p-24 relative">
+        <main className="flex flex-col flex-1 items-center justify-center p-24 relative">
+            <div className="mb-10 text-center">
+                <div className="text-xl">
+                    I am a Software Engineer based in New York.
+                </div>
+                <div className="text-md">
+                    Check out some of my work below.
+                </div>
+            </div>
             <Carousel
-                className="w-3/4 absolute -translate-y-full"
+                className="w-3/4"
                 opts={{
-                    loop: true
+                    loop: true,
                 }}
             >
                 <CarouselContent>
-                    {
-                        projectCards.map(projectCard => {
-                            return (
-                                <CarouselItem key={projectCard.title} className="md:basis-1 lg:basis-1/3">
+                    {projectCards.map((projectCard) => {
+                        return (
+                            <CarouselItem
+                                key={projectCard.name}
+                                className="md:basis-1 lg:basis-1/3"
+                            >
+                                <Link href={`/work/${projectCard.name}`}>
                                     <Card>
                                         <CardHeader>
-                                            <CardTitle>{projectCard.title}</CardTitle>
-                                            <CardDescription>{projectCard.description}</CardDescription>
+                                            <CardTitle>
+                                                {projectCard.cardTitle}
+                                            </CardTitle>
+                                            <CardDescription>
+                                                {projectCard.description}
+                                            </CardDescription>
                                         </CardHeader>
                                     </Card>
-                                </CarouselItem>
-                            )
-                        })
-                    }
+                                </Link>
+                            </CarouselItem>
+                        )
+                    })}
                 </CarouselContent>
                 <CarouselNext />
                 <CarouselPrevious />
