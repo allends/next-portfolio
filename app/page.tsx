@@ -12,7 +12,7 @@ import {
     CarouselPrevious,
 } from '@/components/ui/carousel'
 import Link from 'next/link'
-import { getAllFiles } from './api/projects/route'
+import { getAllFiles } from './api/projects/utils'
 
 export default async function Home() {
     const projects = await getAllFiles()

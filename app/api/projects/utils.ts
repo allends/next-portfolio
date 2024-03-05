@@ -1,43 +1,4 @@
 import { readFile, readdir, stat } from 'fs/promises'
-import { NextRequest } from 'next/server'
-
-export async function GET(request: NextRequest) {
-    const searchParams = request.nextUrl.searchParams
-    const projectName = searchParams.get('projectName')
-
-    if (!!projectName) {
-        return getFileResponseByName(projectName)
-    }
-
-    const projectPath = `${process.cwd()}/app/api/projectFiles`
-
-    let files: string[] = []
-    try {
-        files = await readdir(projectPath)
-    } catch (error) {
-        console.error(error)
-        Response.error()
-    }
-    const projects = []
-
-    for (const file of files) {
-        const filePath = `${projectPath}/${file}`
-
-        try {
-            const fileContents = await readFile(filePath, 'utf-8')
-
-            projects.push({
-                title: file,
-                content: fileContents,
-            })
-        } catch (error) {
-            console.error(error)
-            Response.error()
-        }
-    }
-
-    return Response.json({ projects })
-}
 
 export async function getAllFiles() {
     const projectPath = `${process.cwd()}/app/api/projectFiles`
@@ -112,11 +73,3 @@ export async function getFileByName(fileName: string) {
         content,
     }
 }
-
-// function loadProjectFile(fileName: string) {
-
-// }
-
-// function parseProjectFile(file: File) {
-
-// }

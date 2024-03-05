@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
-import { getAllFiles } from "../api/projects/route"
+import { getAllFiles } from "../api/projects/utils"
 
 const WorkPage = async () => {
     const pages = await getAllFiles()

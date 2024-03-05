@@ -1,5 +1,5 @@
 export const dynamic = 'force-dynamic'
-import { getFileByName } from '@/app/api/projects/route'
+import { getFileByName } from '@/app/api/projects/utils'
 import { Badge } from '@/components/ui/badge'
 import { headers } from 'next/headers'
 import Markdown from 'react-markdown'
