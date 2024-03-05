@@ -7,7 +7,7 @@ const AboutPage = () => {
     return (
         <div className="flex-1">
             <div className="flex flex-col justify-center items-center gap-5 mt-5">
-                <Image src="headshot" alt="A professional headshot of Allen" style={{
+                <Image src="headshot" style={{
                     width: '10rem',
                     height: '10rem',
                     borderRadius: '50%'
@@ -18,13 +18,13 @@ const AboutPage = () => {
                         <Image style={{
                             width: '2rem',
                             height: '2rem',
-                        }} src="github" alt="GitHub link" />
+                        }} src="github" />
                     </Link>
                     <Link href="https://www.linkedin.com/in/allendavisswing" referrerPolicy="no-referrer" target="_blank">
                         <Image style={{
                             width: '2rem',
                             height: '2rem',
-                        }} src="linkedin" alt="GitHub link" />
+                        }} src="linkedin" />
                     </Link>
                 </div>
             </div>
