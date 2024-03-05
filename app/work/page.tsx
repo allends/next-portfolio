@@ -1,6 +1,21 @@
-const WorkPage = () => {
+import { redirect } from "next/navigation"
+import { getAllFiles } from "../api/projects/route"
+
+const WorkPage = async () => {
+    const pages = await getAllFiles()
+
+    if (pages.length === 0) {
+        return <div>no projects</div>
+    }
+
+    if (pages[0].title) {
+        redirect(`/work/${pages[0].title}`)
+    }
+
     return (
-        <div>BROOO</div>
+        <div>
+            <h2>Click on a project to learn more</h2>
+        </div>
     )
 }
 
