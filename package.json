@@ -10,7 +10,7 @@
     "as:pull": "assetstack pull"
   },
   "dependencies": {
-    "@assetstack/react": "^1.0.3",
+    "@assetstack/react": "^1.0.06",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-separator": "^1.0.3",
