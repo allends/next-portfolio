@@ -7,8 +7,6 @@ tags: next.js
 
 # VoxArt
 
-***
-
 ## Overview
 
 ### Create beautiful presentations with just your voice.

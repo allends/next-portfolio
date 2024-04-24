@@ -1,10 +1,11 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display, Poppins } from 'next/font/google'
 import './globals.css'
 import { Navbar } from './_components/Navbar'
 
-const inter = Inter({ subsets: ['latin'] })
+export const poppins = Poppins({ subsets: ['latin'], weight: "400" })
+export const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,9 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`min-h-screen flex flex-col ${inter.className}`}>
+      <body className={`h-screen w-screen flex flex-col ${poppins.className} relative`}>
         <Navbar />
-        {children}
+        <div className="flex-1 overflow-y-auto">
+          {children}
+        </div>
       </body>
     </html>
   )

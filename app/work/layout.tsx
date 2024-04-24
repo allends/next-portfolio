@@ -1,4 +1,3 @@
-import { Badge } from '@/components/ui/badge'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
@@ -20,16 +19,16 @@ const Layout = async ({
 
     return (
         <div
-            className="flex-1 mt-10 grid relative"
+            className="max-w-screen w-screen flex-1 grid relative overflow-x-auto mt-16"
         >
-            <div className="w-48 ml-5 absolute">
-                <ScrollArea className="h-72 w-48 rounded-md border">
+            <div className="w-screen px-5 md:p-0 md:w-48 md:mx-5 mt-5 md:fixed">
+                <ScrollArea className="h-72 w-full rounded-md border">
                     <div className="p-4">
                         <h4 className="mb-4 text-sm font-medium leading-none">
                             Projects
                         </h4>
                         {pages.map((page) => (
-                            <>
+                            <div key={page.title}>
                                 <Link href={`/work/${encodeURI(page.title)}`}>
                                     <div key={page.title} className="text-md">
                                         {page.title}
@@ -39,12 +38,12 @@ const Layout = async ({
                                     </div>
                                 </Link>
                                 <Separator className="my-2" />
-                            </>
+                            </div>
                         ))}
                     </div>
                 </ScrollArea>
             </div>
-            <div className="flex-1 flex justify-center px-56">
+            <div className="flex-1 flex md:mx-auto md:px-56">
                 {children}
             </div>
         </div>

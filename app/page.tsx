@@ -13,8 +13,11 @@ import {
 } from '@/components/ui/carousel'
 import Link from 'next/link'
 import { getAllFiles } from './api/projects/utils'
+import { ChevronDownIcon, ChevronRightIcon } from '@radix-ui/react-icons'
+import { Centered } from './_components/Center'
+import { playfairDisplay } from './layout'
 
-export default async function Home() {
+const ProjectCardCarousel = async () => {
     const projects = await getAllFiles()
 
     const projectCards = projects.map((project) => {
@@ -26,20 +29,13 @@ export default async function Home() {
     })
 
     return (
-        <main className="flex flex-col flex-1 items-center justify-center p-24 relative">
-            <div className="mb-10 text-center">
-                <div className="text-xl">
-                    I am a Software Engineer based in New York.
-                </div>
-                <div className="text-md">
-                    Check out some of my work below.
-                </div>
-            </div>
+        <Centered>
             <Carousel
-                className="w-3/4"
+                className="px-20"
                 opts={{
                     loop: true,
                 }}
+                id="#carousel"
             >
                 <CarouselContent>
                     {projectCards.map((projectCard) => {
@@ -67,6 +63,27 @@ export default async function Home() {
                 <CarouselNext />
                 <CarouselPrevious />
             </Carousel>
+        </Centered>
+    )
+}
+
+const AllenHero = () => {
+    return (
+        <Centered className="p-5">
+            <div className="flex flex-col">
+                <div className={`text-5xl text-left mb-20 mr-10 sm:mr-0 ${playfairDisplay.className}`}>Full Stack SWE crafting beautiful software</div>
+                <a href="/work" className="text-3xl text-right">more <ChevronRightIcon className="inline size-8" /></a>
+            </div>
+        </Centered>
+    )
+}
+
+const pages = [<AllenHero key="hero" />, <ProjectCardCarousel key="carousel" />]
+
+export default async function Home() {
+    return (
+        <main className="h-screen w-screen">
+            <AllenHero />
         </main>
     )
 }

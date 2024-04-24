@@ -1,3 +1,4 @@
+'use server'
 import { readFile, readdir, stat } from 'fs/promises'
 
 export async function getAllFiles() {
