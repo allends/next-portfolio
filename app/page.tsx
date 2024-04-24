@@ -74,7 +74,9 @@ const AllenHero = () => {
         <Centered className="p-5">
             <div className="flex flex-col">
                 <div className={`text-5xl text-left mb-20 mr-10 sm:mr-0 ${playfairDisplay.className}`}>Full Stack SWE crafting beautiful software</div>
-                <a href="/work" className="text-3xl text-right">more <ChevronRightIcon className="inline size-8" /></a>
+                <div className="text-right animate-bounce">
+                    <a href="/work" className="text-3xl">more <ChevronRightIcon className="inline size-8" /></a>
+                </div>
             </div>
         </Centered>
     )
