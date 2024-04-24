@@ -1,6 +1,8 @@
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
-import { playfairDisplay } from "../layout"
+import { Playfair_Display } from 'next/font/google'
+
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 
 export const Navbar = () => {
 

@@ -1,11 +1,10 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, Poppins } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import { Navbar } from './_components/Navbar'
 
-export const poppins = Poppins({ subsets: ['latin'], weight: "400" })
-export const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
+const poppins = Poppins({ subsets: ['latin'], weight: "400" })
 
 export const metadata: Metadata = {
   title: 'Create Next App',

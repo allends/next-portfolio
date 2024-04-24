@@ -15,7 +15,9 @@ import Link from 'next/link'
 import { getAllFiles } from './api/projects/utils'
 import { ChevronDownIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 import { Centered } from './_components/Center'
-import { playfairDisplay } from './layout'
+import { Playfair_Display } from 'next/font/google'
+
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 
 const ProjectCardCarousel = async () => {
     const projects = await getAllFiles()
