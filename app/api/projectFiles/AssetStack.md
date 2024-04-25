@@ -7,7 +7,7 @@ tags: next.js, trpc, mysql
 
 # AssetStack
 
-Manage your static assets like a professional.
+> Manage your static assets like a professional.
 
 ## Overview
 
