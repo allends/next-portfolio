@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/menubar'
 import { NavigationMenuLink, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
 import { MobileArticleSelector } from '../_components/MobileNavbar'
+import Transition from '../transition'
 
 const DesktopArticleSelector = (props: {
     pages: { title: string; description: string }[]
@@ -60,7 +61,9 @@ const Layout = async ({
         <div className="max-w-screen w-screen flex-1 grid relative overflow-x-auto mt-16">
             <MobileArticleSelector pages={pages} />
             <DesktopArticleSelector pages={pages} />
-            <div className="flex-1 flex md:mx-auto md:px-56">{children}</div>
+            <Transition>
+                <div className="flex-1 flex md:mx-auto md:px-56">{children}</div>
+            </Transition>
         </div>
     )
 }

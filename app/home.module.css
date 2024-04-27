@@ -1,0 +1,13 @@
+.raindrop {
+    position: absolute;
+    top: -20px; /* Start above the screen */
+    width: 2px;
+    height: 20px;
+    background-color: #00f; /* Adjust color as needed */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh); /* Fall to the bottom of the screen */
+    }
+}
