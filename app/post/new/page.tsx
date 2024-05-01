@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
 
-export const Page = () => {
+export default function Page(){
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -38,5 +38,3 @@ export const Page = () => {
         </div>
     )
 }
-
-export default Page
