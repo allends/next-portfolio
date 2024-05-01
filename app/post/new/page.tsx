@@ -1,6 +1,6 @@
 "use client"
 
-import { createPost } from "@/app/api/blog/route"
+import { createPost } from "@/app/api/blog/service"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"

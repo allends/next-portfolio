@@ -1,5 +1,5 @@
 'use client'
-import { deletePost, getPost } from '@/app/api/blog/route'
+import { deletePost, getPost } from '@/app/api/blog/service'
 import { Button } from '@/components/ui/button'
 import { BlogPost } from '@/db/schema/blogPost'
 import { usePathname, useRouter } from 'next/navigation'

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
-import { getAllPosts } from "../api/blog/route"
+import { getAllPosts } from "../api/blog/service"
 
 const WorkPage = async () => {
     const pages = await getAllPosts()
