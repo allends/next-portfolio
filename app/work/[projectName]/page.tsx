@@ -1,20 +1,9 @@
 'use client'
-import { Centered } from '@/app/_components/Center'
 import { getFileByName } from '@/app/api/projects/utils'
 import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Markdown from 'react-markdown'
-
-const CodeBlock = (props: any) => {
-    console.log(props)
-    return (
-        <pre className="max-w-screen overflow-x-scroll">
-            <code>{props.children}</code>
-        </pre>
-    )
-}
 
 export default function ProjectPage() {
     const pathname = usePathname()
