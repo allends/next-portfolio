@@ -1,11 +1,12 @@
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
-import { getAllFiles } from '../api/projects/utils'
 import { MobileArticleSelector } from '../_components/MobileNavbar'
+import { PostService } from '@/db/service/postService'
+import { BlogPost } from '@/db/schema/blogPost'
 
 const DesktopArticleSelector = (props: {
-    pages: { title: string; description: string }[]
+    pages: BlogPost[]
 }) => {
     return (
         <div className="w-screen px-5 md:p-0 md:w-48 md:mx-5 mt-5 md:fixed hidden md:block">
@@ -16,7 +17,7 @@ const DesktopArticleSelector = (props: {
                     </h4>
                     {props.pages.map((page) => (
                         <div key={page.title}>
-                            <Link href={`/work/${encodeURI(page.title)}`}>
+                            <Link href={`/work/${encodeURI(`${page.id}`)}`}>
                                 <div key={page.title} className="text-md">
                                     {page.title}
                                 </div>
@@ -39,19 +40,13 @@ const Layout = async ({
 }: {
     children: React.ReactNode
 }) => {
-    const projects = await getAllFiles()
-
-    const pages = projects.map((project) => {
-        return {
-            title: project.title,
-            description: project.metadata['description'],
-        }
-    })
+    const postsIndex = await PostService.getPostsIndex()
+    const allPosts = await PostService.getPosts()
 
     return (
         <div className="max-w-screen w-screen flex-1 grid relative overflow-x-auto mt-16">
-            <MobileArticleSelector pages={pages} />
-            <DesktopArticleSelector pages={pages} />
+            <MobileArticleSelector pages={allPosts} />
+            <DesktopArticleSelector pages={allPosts} />
             <div className="flex-1 flex md:mx-auto md:px-56">{children}</div>
         </div>
     )

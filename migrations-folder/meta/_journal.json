@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1714536654044,
+      "tag": "0000_graceful_darwin",
+      "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1714538780156,
+      "tag": "0001_mighty_shatterstar",
+      "breakpoints": true
+    }
+  ]
+}

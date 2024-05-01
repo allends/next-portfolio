@@ -1,30 +1,33 @@
 'use client'
-import { getFileByName } from '@/app/api/projects/utils'
-import { Badge } from '@/components/ui/badge'
-import { usePathname } from 'next/navigation'
+import { deletePost, getPost } from '@/app/api/blog/route'
+import { Button } from '@/components/ui/button'
+import { BlogPost } from '@/db/schema/blogPost'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Markdown from 'react-markdown'
 
 export default function ProjectPage() {
-    const pathname = usePathname()
-    const [project, setProject] = useState<Awaited<
-        ReturnType<typeof getFileByName>
-    > | null>(null)
-    const projectName = pathname.split('/').pop()
+
+    const router = useRouter()
+    const pathName = usePathname()
+    const projectName = pathName.split('/').pop()
+
+    if (typeof projectName !== 'string') {
+        throw new Error('projectName is not a string')
+    }
+
+    const [project, setProject] = useState<BlogPost>()
 
     useEffect(() => {
         let aborted = false
 
-        const fetchProject = async () => {
-            if (!projectName) {
-                return
-            }
-            const project = await getFileByName(projectName as string)
+        const fetchProjectFromDatabase = async () => {
+            const project = await getPost(parseInt(projectName))
             if (aborted) return
             setProject(project)
         }
 
-        fetchProject()
+        fetchProjectFromDatabase()
 
         return () => {
             aborted = true
@@ -59,15 +62,12 @@ export default function ProjectPage() {
 
     return (
         <article className="prose max-w-[100vw] mt-5 px-5 md:px-0 flex-1 break-words text-wrap animate-in">
-            <div className="flex flex-row gap-2 mb-2">
-                {project.metadata['tags'].split(',').map((tag: string) => {
-                    return (
-                        <Badge key={tag} variant="outline">
-                            {tag}
-                        </Badge>
-                    )
-                })}
-            </div>
+            {/* <Button
+                onClick={() => {
+                    deletePost(project.id)
+                    router.push('/work')
+                }}
+                >Delete</Button> */}
             <Markdown
                 components={{
                     a: (props) => {

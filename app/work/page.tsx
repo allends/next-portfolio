@@ -1,15 +1,15 @@
 import { redirect } from "next/navigation"
-import { getAllFiles } from "../api/projects/utils"
+import { getAllPosts } from "../api/blog/route"
 
 const WorkPage = async () => {
-    const pages = await getAllFiles()
+    const pages = await getAllPosts()
 
     if (pages.length === 0) {
         return <div>no projects</div>
     }
 
     if (pages[0].title) {
-        redirect(`/work/${pages[0].title}`)
+        redirect(`/work/${pages[0].id}`)
     }
 
     return (

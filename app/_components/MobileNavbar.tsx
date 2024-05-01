@@ -8,9 +8,10 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
+import { BlogPost } from '@/db/schema/blogPost'
 
 export const MobileArticleSelector = (props: {
-    pages: { title: string; description: string }[]
+    pages: BlogPost[]
 }) => {
     return (
         <div className='mx-5 mt-5 z-0 md:hidden'>
@@ -25,7 +26,7 @@ export const MobileArticleSelector = (props: {
                             {props.pages.map((page) => (
                                 <NavigationMenuLink
                                     key={page.title}
-                                    href={`/work/${encodeURI(page.title)}`}
+                                    href={`/work/${encodeURI(`${page.id}`)}`}
                                     className="p-5"
                                 >
                                     <div key={page.title} className="text-md">
