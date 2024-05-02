@@ -21,7 +21,7 @@ export const Navbar = () => {
 
     return (
     <div id="header" className="flex flex-col items-center w-screen z-10 absolute">
-        <div className="flex flex-row w-full justify-between py-2 px-2 md:px-10  bg-white opacity-90" style={{
+        <div className="flex flex-row w-full justify-between items-center py-2 px-2 md:px-10  bg-white opacity-90" style={{
           backdropFilter: 'blur(30px)',
         }}>
           <div className="flex flex-col">
