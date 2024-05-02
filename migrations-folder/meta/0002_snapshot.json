@@ -1,0 +1,71 @@
+{
+  "id": "5eb2f5c5-9536-4b61-925e-eefbba385786",
+  "prevId": "c519a2c5-a4db-4afb-8e59-1f9d35fdf56e",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "posts": {
+      "name": "posts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created": {
+          "name": "created",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated": {
+          "name": "updated",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "name_idx": {
+          "name": "name_idx",
+          "columns": [
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -3,10 +3,10 @@ import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
 import { MobileArticleSelector } from '../_components/MobileNavbar'
 import { PostService } from '@/db/service/postService'
-import { BlogPost } from '@/db/schema/blogPost'
+import { Post } from '@/db/schema/post'
 
 const DesktopArticleSelector = (props: {
-    pages: BlogPost[]
+    pages: Post[]
 }) => {
     return (
         <div className="w-screen px-5 md:p-0 md:w-48 md:mx-5 mt-5 md:fixed hidden md:block">

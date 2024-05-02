@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
 
-export default function Page(){
+
+export default function Page() {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')

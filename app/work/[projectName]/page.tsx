@@ -1,7 +1,7 @@
 'use client'
 import { deletePost, getPost } from '@/app/api/blog/service'
 import { Button } from '@/components/ui/button'
-import { BlogPost } from '@/db/schema/blogPost'
+import { Post } from '@/db/schema/post'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Markdown from 'react-markdown'
@@ -16,7 +16,7 @@ export default function ProjectPage() {
         throw new Error('projectName is not a string')
     }
 
-    const [project, setProject] = useState<BlogPost>()
+    const [project, setProject] = useState<Post>()
 
     useEffect(() => {
         let aborted = false

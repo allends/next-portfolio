@@ -8,10 +8,10 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
-import { BlogPost } from '@/db/schema/blogPost'
+import { Post } from '@/db/schema/post'
 
 export const MobileArticleSelector = (props: {
-    pages: BlogPost[]
+    pages: Post[]
 }) => {
     return (
         <div className='mx-5 mt-5 z-0 md:hidden'>

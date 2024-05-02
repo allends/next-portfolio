@@ -7,8 +7,8 @@ import {
     varchar
 } from 'drizzle-orm/pg-core';
 
-export const blogs = pgTable(
-    'blogs',
+export const posts = pgTable(
+    'posts',
     {
         id: serial('id').primaryKey(),
         title: varchar('name', { length: 256 }).notNull(),
@@ -26,5 +26,5 @@ export const blogs = pgTable(
     }
 )
 
-export type BlogPost = typeof blogs.$inferSelect;
-export type NewBlogPost = typeof blogs.$inferInsert;
+export type Post = typeof posts.$inferSelect;
+export type NewPost = typeof posts.$inferInsert;

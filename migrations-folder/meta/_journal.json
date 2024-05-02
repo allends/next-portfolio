@@ -15,6 +15,13 @@
       "when": 1714538780156,
       "tag": "0001_mighty_shatterstar",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714623480862,
+      "tag": "0002_nebulous_tana_nile",
+      "breakpoints": true
     }
   ]
 }

@@ -1,25 +1,25 @@
 import { eq } from 'drizzle-orm'
 import { db } from '..'
-import { NewBlogPost, blogs } from '../schema/blogPost'
+import { NewPost, posts } from '../schema/post'
 
 export const PostService = {
     getPostsIndex: () => {
         return db
             .select({
-                title: blogs.title,
-                description: blogs.description,
-                id: blogs.id,
+                title: posts.title,
+                description: posts.description,
+                id: posts.id,
             })
-            .from(blogs)
+            .from(posts)
     },
     getPosts: () => {
-        return db.select().from(blogs)
+        return db.select().from(posts)
     },
     getPost: async (id: number) => {
 
-        const posts = await db.select().from(blogs).where(eq(blogs.id, id)).execute()
+        const queriedPosts = await db.select().from(posts).where(eq(posts.id, id)).execute()
 
-        const post = posts[0]
+        const post = queriedPosts[0]
 
         if (!post) {
             throw new Error('Post not found')
@@ -27,10 +27,10 @@ export const PostService = {
 
         return post
     },
-    createPost: (post: NewBlogPost) => {
-        return db.insert(blogs).values(post).execute()
+    createPost: (post: NewPost) => {
+        return db.insert(posts).values(post).execute()
     },
     deletePost: (id: number) => {
-        return db.delete(blogs).where(eq(blogs.id, id)).execute()
+        return db.delete(posts).where(eq(posts.id, id)).execute()
     }
 }
