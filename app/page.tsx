@@ -27,21 +27,20 @@ const AllenHero = () => {
 }
 
 export default async function Home() {
-    const numRaindrops = 100
     return (
         <main className="h-screen w-screen">
-            <Centered className="mx-5 md:w-2/3 md:mx-auto break-words p-1">
+            <Centered className="md:w-2/3 md:mx-auto break-words p-3">
                 <div className="flex flex-row gap-2 items-center justify-start w-fit mr-auto mb-2">
                     <div className='text-xl'>{`I'm Allen`}</div>
                     <Badge className="bg-purple-500">back end</Badge>
                     <Badge className="bg-teal-500">front end</Badge>
                     <Badge className="bg-sky-500">dev ops</Badge>
                 </div>
-                <div className="text-5xl leading-tight md:leading-snug md:mb-5 text-wrap">
+                <div className="text-5xl leading-tight md:leading-snug md:mb-5 text-wrap overflow-hidden w-full">
                     Crafting beautiful software to solve <Badge className="text-5xl">real-world</Badge> problems
                 </div>
                 <Link className='ml-auto' href="/work">
-                    <Button className="bg-transparent active:bg-slate-100 hover:bg-slate-100 text-slate-700 shadow-none outline outline-slate-700">more</Button>
+                    <Button className="bg-transparent active:bg-slate-100 hover:bg-slate-100 text-slate-700 shadow-none outline outline-slate-700 animate-pulse">more</Button>
                 </Link>
             </Centered>
         </main>
