@@ -12,7 +12,7 @@ const EnvironmentManager = {
     }
 }
 
-export default function Layout(props: React.AllHTMLAttributes<HTMLDivElement>) {
+export default function Layout(props: { children: React.ReactNode }) {
     if (!EnvironmentManager.isDevelopment()){
         return redirect('/work')
     }
