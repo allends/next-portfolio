@@ -1,7 +1,6 @@
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import { Centered } from './_components/Center'
 import { Playfair_Display } from 'next/font/google'
-import { Raindrops } from './_components/Raindrops'
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 
@@ -28,7 +27,6 @@ export default async function Home() {
     const numRaindrops = 100
     return (
         <main className="h-screen w-screen">
-            <Raindrops />
             <AllenHero />
         </main>
     )
